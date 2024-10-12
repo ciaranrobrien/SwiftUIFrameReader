@@ -4,7 +4,7 @@ SwiftUI container views with a subset of `GeometryReader` features.
 
 ## Motivation
 
-`GeometryReader` recalculates its body every time the container view's geometry changes. This can result in unnecessary recalculations if the body only depends on a subset of the container view's geometry information. For example, a child view may depend on the parent view's size but not on it's position.
+`GeometryReader` recalculates its body every time the container view's geometry changes. This can result in unnecessary recalculations if the body only depends on a subset of the container view's geometry information. For example, a child view may depend on the parent view's size but not on its position.
 
 This package provides container views that each offer a subset of the functionality of a `GeometryReader`. These container views have the same space-filling behaviour as a `GeometryReader`, but only recalculate their body when their returned value changes.
 
