@@ -58,7 +58,7 @@ GeometryValueReader { proxy in
 ## Installation
 
 * Install with [Swift Package Manager](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app).
-* Import `SwiftUIBoundsReader` to start using.
+* Import `SwiftUIFrameReader` to start using.
 
 ## Contact
 
