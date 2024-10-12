@@ -6,12 +6,12 @@
 
 import SwiftUI
 
-/// A container view that defines its content as a function of its own bounds.
+/// A container view that defines its content as a function of its own size.
 ///
 /// This view returns a flexible preferred size to its parent layout.
-public struct BoundsReader<Content: View, Value: Equatable>: View {
+public struct SizeReader<Content: View, Value: Equatable>: View {
     private var content: (Value) -> Content
-    private var keyPath: KeyPath<BoundsProxy, Value>
+    private var keyPath: KeyPath<CGSize, Value>
     
     public var body: some View {
         GeometryReader { proxy in
@@ -19,7 +19,7 @@ public struct BoundsReader<Content: View, Value: Equatable>: View {
                 .hidden()
                 .preference(
                     key: ReaderKey<Value>.self,
-                    value: BoundsProxy(safeAreaInsets: proxy.safeAreaInsets, size: proxy.size)[keyPath: keyPath]
+                    value: proxy.size[keyPath: keyPath]
                 )
         }
         .overlayPreferenceValue(ReaderKey<Value>.self) { value in
@@ -31,16 +31,17 @@ public struct BoundsReader<Content: View, Value: Equatable>: View {
 }
 
 
-public extension BoundsReader {
+public extension SizeReader {
     init(@ViewBuilder content: @escaping (Value) -> Content)
-    where Value == BoundsProxy
+    where Value == CGSize
     {
         self.content = content
         self.keyPath = \.self
     }
     
-    init(_ keyPath: KeyPath<BoundsProxy, Value>, @ViewBuilder content: @escaping (Value) -> Content) {
+    init(_ keyPath: KeyPath<CGSize, Value>, @ViewBuilder content: @escaping (Value) -> Content) {
         self.content = content
         self.keyPath = keyPath
     }
 }
+

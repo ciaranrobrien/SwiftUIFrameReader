@@ -33,6 +33,7 @@ public struct FrameReader<Content: View, Value: Equatable>: View {
 
 
 public extension FrameReader {
+    @_disfavoredOverload
     init(
         in coordinateSpace: CoordinateSpace,
         @ViewBuilder content: @escaping (Value) -> Content
@@ -43,6 +44,7 @@ public extension FrameReader {
         self.keyPath = \.self
     }
     
+    @_disfavoredOverload
     init(
         _ keyPath: KeyPath<CGRect, Value>,
         in coordinateSpace: CoordinateSpace,

@@ -1,14 +1,13 @@
-//
-//  SwiftUIView.swift
-//  SwiftUIFrameReader
-//
-//  Created by Ciaran O'Brien on 12/10/2024.
-//
+/**
+*  SwiftUIFrameReader
+*  Copyright (c) Ciaran O'Brien 2024
+*  MIT license, see LICENSE file for details
+*/
 
 import SwiftUI
 
 internal extension GeometryProxy {
     var bounds: BoundsProxy {
-        .init(safeAreaInsets: safeAreaInsets, size: size)
+        BoundsProxy(safeAreaInsets: safeAreaInsets, size: size)
     }
 }
