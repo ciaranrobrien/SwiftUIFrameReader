@@ -1,6 +1,6 @@
 /**
 *  SwiftUIFrameReader
-*  Copyright (c) Ciaran O'Brien 2024
+*  Copyright (c) Ciaran O'Brien 2025
 *  MIT license, see LICENSE file for details
 */
 
@@ -18,11 +18,11 @@ public struct SafeAreaReader<Content: View, Value: Equatable>: View {
             Color.clear
                 .hidden()
                 .preference(
-                    key: ReaderKey<Value>.self,
+                    key: EquatableReaderKey<Value>.self,
                     value: proxy.safeAreaInsets[keyPath: keyPath]
                 )
         }
-        .overlayPreferenceValue(ReaderKey<Value>.self) { value in
+        .overlayPreferenceValue(EquatableReaderKey<Value>.self) { value in
             if let value {
                 content(value)
             }
